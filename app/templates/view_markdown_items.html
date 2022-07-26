@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <h1>Expired Items</h1>
+    <h1>Markdown Items</h1>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -20,7 +20,7 @@
                     <td>{{ item.name }}</td>
                     <td>{{ item.markdown }}</td>
                     <td>{{ item.expiration }}</td>
-                    <td><a href="{{ url_for('delete_item_expired', expiration_date=expiration_date, item_id=item.id) }}" class="btn btn-danger" role="button">Delete</a></td>
+                    <td><a href="{{ url_for('delete_item_markdown', markdown_date=markdown_date, item_id=item.id) }}" class="btn btn-danger" role="button">Delete</a></td>
                 </tr>
             {% endfor %}
             </tbody>

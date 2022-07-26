@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, RadioField, FormField, DateField, SelectMultipleField, widgets, FloatField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, DateField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from app.models import User
 
@@ -15,7 +15,6 @@ class UserBase(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    phone = StringField('Phone', validators=[DataRequired()])
 
 
 class RegistrationForm(UserBase):
@@ -49,3 +48,16 @@ class ChangePasswordForm(FlaskForm):
 class DeleteUserForm(FlaskForm):
     confirm = BooleanField('Confirm')
     submit = SubmitField('Submit Selection')
+
+
+class ItemForm(FlaskForm):
+    upc = StringField('UPC', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
+    markdown = DateField('Markdown Date', validators=[DataRequired()])
+    expiration = DateField('Expiration Date', validators=[DataRequired()])
+    submit = SubmitField('Save Item')
+
+
+class DateSearchForm(FlaskForm):
+    date = DateField('Pick Date', validators=[DataRequired()])
+    submit = SubmitField('Search Date')
